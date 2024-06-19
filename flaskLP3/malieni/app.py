@@ -1,8 +1,8 @@
 from flask import Flask , render_template, request, redirect, url_for
 lista_produtos = [
-        {"nome": "Coca-cola" , "descricao":"Bom" , "preco": "5.00" , "imagem": "https://i.ytimg.com/vi/kgCJV5ChGa4/maxresdefault.jpg"},
+        {"nome": "Coca-cola" , "descricao":"Beba água" , "preco": "5.00" , "imagem": "https://pbs.twimg.com/media/E38B0zOWQAMC1bu.jpg"},
         {"nome": "Pepsi" , "descricao":"Ruim" , "preco": "4.00", "imagem": "https://i.ytimg.com/vi/ey24G0EzJYI/maxresdefault.jpg"},
-        {"nome": "Dolly" , "descricao":"Custo beneficios" , "preco": "2.00" , "imagem": "https://i1.sndcdn.com/artworks-000504423309-2hzdh2-t500x500.jpg"},
+        {"nome": "Baly" , "descricao":"Custo beneficios" , "preco": "12.00" , "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq_wNULSboJKGGIQDg82K1h8bbtbdP_L_a8Q&s.jpg"},
     ]
 
 app = Flask(__name__)
