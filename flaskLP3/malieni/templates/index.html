@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h1>Bem-vindo ao meu aplicativo!</h1>
+  <p>Escolha uma opção abaixo:</p>
+  <ul>
+    <li><a href="{{ url_for('gerar_cpf') }}">Gerar CPF</a></li>
+    <li><a href="{{ url_for('gerar_cnpj') }}">Gerar CNPJ</a></li>
+    <li><a href="{{ url_for('validar_cpf') }}">Validar CPF</a></li>
+    <li><a href="{{ url_for('validar_cnpj') }}">Validar CNPJ</a></li>
+  </ul>
+{% endblock %}
+
+

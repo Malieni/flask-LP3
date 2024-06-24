@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home App</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('gerar_cpf') }}">Gerar CPF</a></li>
+          <li><a href="{{ url_for('gerar_cnpj') }}">Gerar CNPJ</a></li>
+          <li><a href="{{ url_for('validar_cpf') }}">Validar CPF</a></li>
+          <li><a href="{{ url_for('validar_cnpj') }}">Validar CNPJ</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

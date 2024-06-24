@@ -1,4 +1,5 @@
 from flask import Flask , render_template, request, redirect, url_for
+from validate_docbr import CPF , CNPJ
 lista_produtos = [
         {"nome": "Coca-cola" , "descricao":"Beba água" , "preco": "5.00" , "imagem": "https://pbs.twimg.com/media/E38B0zOWQAMC1bu.jpg"},
         {"nome": "Pepsi" , "descricao":"Ruim" , "preco": "4.00", "imagem": "https://i.ytimg.com/vi/ey24G0EzJYI/maxresdefault.jpg"},
@@ -26,7 +27,14 @@ def produto(nome):
             return render_template("produto.html", produto=produto)
 
 
-    return "Produto não existe!" 
+    return "Produto não existe!" @app.route('/gerar_cnpj')
+def gerar_cnpj():
+    cnpj = CNPJ()
+    novo_cnpj = cnpj.generate(True)
+    return render_template('gerar_cnpj.html', cnpj=novo_cnpj)
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 @app.route("/produtos/cadastro")
 def cadastro_produto():
@@ -44,3 +52,48 @@ def salvar_produto():
     return redirect(url_for("produtos"))
 
 app.run(port=5001)
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/gerar_cpf", methods=["GET"])
+def gerar_cpf():
+    cpf = CPF()
+    cpf_aleatorio = cpf.generate(True)
+    return render_template("gerar_cpf.html", cpf_aleatorio=cpf_aleatorio)
+
+@app.route("/gerar_cnpj", methods=["GET"])
+def gerar_cnpj():
+    cnpj = CNPJ()
+    cnpj_aleatorio = cnpj.generate(True)
+    return render_template("gerar_cnpj.html", cnpj_aleatorio=cnpj_aleatorio)
+
+@app.route("/validar_cpf", methods=["GET", "POST"])
+def validar_cpf():
+    if request.method == "POST":
+        cpf_usuario = request.form["cpf_usuario"]
+        cpf = CPF()
+        if cpf.validate(cpf_usuario):
+            mensagem = "CPF válido!"
+        else:
+            mensagem = "CPF inválido!"
+        return render_template("validar_cpf.html", mensagem=mensagem)
+    return render_template("validar_cpf.html")
+
+@app.route("/validar_cnpj", methods=["GET", "POST"])
+def validar_cnpj():
+    if request.method == "POST":
+        cnpj_usuario = request.form["cnpj_usuario"]
+        cnpj = CNPJ()
+        if cnpj.validate(cnpj_usuario):
+            mensagem = "CNPJ válido!"
+        else:
+            mensagem = "CNPJ inválido!"
+        return render_template("validar_cnpj.html", mensagem=mensagem)
+    return render_template("validar_cnpj.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)
