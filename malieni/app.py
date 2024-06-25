@@ -59,19 +59,19 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/gerar_cpf", methods=["GET"])
+@app.route('/gerar_cpf')
 def gerar_cpf():
     cpf = CPF()
-    cpf_aleatorio = cpf.generate(True)
-    return render_template("gerar_cpf.html", cpf_aleatorio=cpf_aleatorio)
+    novo_cpf = cpf.generate(True)
+    return render_template('gerar_cpf.html', cpf=novo_cpf)
 
-@app.route("/gerar_cnpj", methods=["GET"])
+@app.route('/gerar_cnpj')
 def gerar_cnpj():
     cnpj = CNPJ()
-    cnpj_aleatorio = cnpj.generate(True)
-    return render_template("gerar_cnpj.html", cnpj_aleatorio=cnpj_aleatorio)
+    novo_cnpj = cnpj.generate(True)
+    return render_template('gerar_cnpj.html', cnpj=novo_cnpj)
 
-@app.route("/validar_cpf", methods=["GET", "POST"])
+@app.route('/validar_cpf', methods=["GET", "POST"])
 def validar_cpf():
     if request.method == "POST":
         cpf_usuario = request.form["cpf_usuario"]
@@ -83,7 +83,7 @@ def validar_cpf():
         return render_template("validar_cpf.html", mensagem=mensagem)
     return render_template("validar_cpf.html")
 
-@app.route("/validar_cnpj", methods=["GET", "POST"])
+@app.route('/validar_cnpj', methods=["GET", "POST"])
 def validar_cnpj():
     if request.method == "POST":
         cnpj_usuario = request.form["cnpj_usuario"]
@@ -95,5 +95,5 @@ def validar_cnpj():
         return render_template("validar_cnpj.html", mensagem=mensagem)
     return render_template("validar_cnpj.html")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)

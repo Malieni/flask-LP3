@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %} Validar CPF {% endblock %}
+{% block content %}
+<h1 style="text-align:center">Validar CPF</h1>
+    <form style="text-align:center" method="POST">
+        <label for="cpf">Validar CPF</label>
+        <input type="text" name="cpf" id="cpf">
+
+        <button type="submit">Validar</button>
+    </form>
+{% endblock %}

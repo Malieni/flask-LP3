@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+
+{% block title %} CNPJ Válido {% endblock %}
+{% block content %}
+<h1 style="text-align:center">CNPJ Válido</h1>
+<p>O CNPJ {{ cnpj }} é válido!</p>
+<a href="{% url 'index' %}">Voltar</a>
+{% endblock %}
