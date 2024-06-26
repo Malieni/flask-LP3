@@ -1,12 +1,18 @@
-{% extends "layout.html" %}
-
-{% block title %} Validar CNPJ {% endblock %}
-{% block content %}
-<h1 style="text-align:center">Validar CNPJ</h1>
-    <form style="text-align:center" method="POST">
-        <label for="cnpj">Validar CNPJ</label>
-        <input type="text" name="cnpj" id="cnpj">
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validar CNPJ</title>
+</head>
+<body>
+    <h1>Validar CNPJ</h1>
+    <form action="" method="post">
+        <label for="cnpj_usuario">CNPJ:</label>
+        <input type="text" id="cnpj_usuario" name="cnpj_usuario" required>
         <button type="submit">Validar</button>
     </form>
-{% endblock %}
+    {% if mensagem %}
+        <p>{{ mensagem }}</p>
+    {% endif %}
+    <p><a href="{{ url_for('index') }}">Voltar</a></p>
+</body>
+</html>

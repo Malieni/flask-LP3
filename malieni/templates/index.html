@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width , initial-scale=1.0">
-    <title>{% block title %} {% endblock %}</title>
-</head> 
+    <title>Gerador e Validador de CPF e CNPJ</title>
+    <style>
+        /* Adicionamos um pouco de CSS para estilizar a navbar */
+        .navbar {
+            background-color: #cecece;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 10px;
+        }
+    </style>
+</head>
 <body>
-    <nav>
-        <p style="text-align: center;">
-        <a href="/gerar_cpf">Gerador de CPF</a>
-        <a href="/gerar_cnpj">Gerador de CNPJ</a>
-        <a href="/validar_cpf">Validar CPF</a>
-        <a href="/validar_cnpj">Validador de CNPJ</a>
-        </p>
+    <nav class="navbar">
+        <a href="{{ url_for('gerar_cpf') }}">Gerar CPF</a>
+        <a href="{{ url_for('gerar_cnpj') }}">Gerar CNPJ</a>
+        <a href="{{ url_for('validar_cpf') }}">Validar CPF</a>
+        <a href="{{ url_for('validar_cnpj') }}">Validar CNPJ</a>
     </nav>
-  <h1> {% block content %} </h1>
-  <p> {% endblock %} </p>
+    <h1 style="text-align: center;">Gerador e Validador de CPF e CNPJ</h1>
 </body>
 </html>
